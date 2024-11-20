@@ -8,6 +8,9 @@ import easyocr
 app = Flask(__name__)
 reader = easyocr.Reader(['en'])
 
+@app.route('/')
+def home():
+    return "<h1>Hello OCR</h1>"
 
 @app.route('/process-image', methods=['POST'])
 def process_image():
