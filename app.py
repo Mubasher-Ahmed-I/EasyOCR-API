@@ -8,10 +8,6 @@ import easyocr
 app = Flask(__name__)
 reader = easyocr.Reader(['en'])
 
-# Route to display "Hello OCR"
-@app.route('/')
-def home():
-    return "<h1>Hello OCR</h1>"
 
 @app.route('/process-image', methods=['POST'])
 def process_image():
@@ -71,6 +67,8 @@ def process_image():
             extracted_text.append(str(text))
 
         return jsonify({"text": extracted_text})
+
+       # return jsonify({"text": results})
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
